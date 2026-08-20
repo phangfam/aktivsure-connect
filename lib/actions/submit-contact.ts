@@ -1,5 +1,6 @@
 "use server";
 
+import { randomUUID } from "node:crypto";
 import { insertContact, insertConsentLog } from "@/lib/data/contacts";
 import { PRIVACY_POLICY_VERSION } from "@/lib/data/types";
 
@@ -35,8 +36,10 @@ export async function submitContact(
   }
 
   try {
+    const contactId = randomUUID();
     const consentTimestamp = new Date().toISOString();
-    const contact = await insertContact({
+    await insertContact({
+      id: contactId,
       name,
       phone: phone || null,
       email: email || null,
@@ -48,7 +51,7 @@ export async function submitContact(
     });
 
     await insertConsentLog({
-      contact_id: contact.id,
+      contact_id: contactId,
       consent_type: "marketing_opt_in",
       privacy_policy_version: PRIVACY_POLICY_VERSION,
     });

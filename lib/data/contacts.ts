@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import type { ContactWithRelations } from "./types";
 
 export type NewContact = {
+  id: string;
   name: string;
   phone: string | null;
   email: string | null;
@@ -15,14 +16,8 @@ export type NewContact = {
 
 export async function insertContact(contact: NewContact) {
   const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("contacts")
-    .insert(contact)
-    .select("id")
-    .single();
-
+  const { error } = await supabase.from("contacts").insert(contact);
   if (error) throw error;
-  return data;
 }
 
 export async function insertConsentLog(input: {
