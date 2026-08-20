@@ -40,7 +40,8 @@ build the wrong thing (e.g. a marketing landing page). Open the plan and build f
 
 ## Deploy & data (binding — this stack is already provisioned)
 - **Deploy by git, never by CLI.** `git add -A && git commit -m "…" && git push` to `main`;
-  Vercel auto-deploys from GitHub. Do NOT run `vercel deploy` / `vercel --prod` with local
+  Vercel auto-deploys from GitHub (confirmed working 2026-08-20 — pushes reliably trigger a
+  production deployment within ~30s). Do NOT run `vercel deploy` / `vercel --prod` with local
   files — it desyncs git, and the next push silently overwrites your live app.
 - **Commit + push every change.** Git is the source of truth; uncommitted work is lost on
   the next deploy.
