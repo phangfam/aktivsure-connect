@@ -38,6 +38,32 @@ export default function DisclaimerPage() {
             provided at the point of sale.
           </p>
         </section>
+
+        <section>
+          <h2 className="text-base font-semibold text-[#0b1f3a]">14-day quality warranty</h2>
+          <p>
+            AktivSure covers the following issues if reported within <strong>14 days of
+            receiving your tin</strong>:
+          </p>
+          <ul className="ml-5 list-disc space-y-1">
+            <li>The tin arrived dented</li>
+            <li>The milk powder is lumpy when opened (a sign the seal was compromised)</li>
+            <li>The tin was already expired on arrival</li>
+          </ul>
+          <p className="mt-2">
+            To make a claim within the 14-day window, contact us using the chat assistant on
+            this site or email privacy@aktivsure.com with your registration details and a
+            photo of the issue.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-base font-semibold text-[#0b1f3a]">Registration gift</h2>
+          <p>
+            Customers who register their product receive a small token of appreciation from
+            AktivSure. The exact gift is being finalized and will be confirmed at a later date.
+          </p>
+        </section>
       </div>
     </div>
   );

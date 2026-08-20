@@ -26,7 +26,8 @@ export const CHAT_FLOW: Record<string, ChatNode> = {
   },
   register_redirect: {
     id: "register_redirect",
-    message: "You can register your product on our registration form.",
+    message:
+      "You can register your product on our registration form. Register now and receive a small token of appreciation from AktivSure.",
     link: { href: "/capture", label: "Go to registration form" },
     options: [{ label: "Back to menu", next: "root" }],
   },
@@ -35,6 +36,7 @@ export const CHAT_FLOW: Record<string, ChatNode> = {
     message: "What would you like to know?",
     options: [
       { label: "How long is my warranty?", next: "warranty_answer_length" },
+      { label: "My tin has a problem", next: "warranty_answer_defect" },
       { label: "Is it safe to use with medication?", next: "warranty_answer_medical" },
       { label: "Something else", next: "escalation_start" },
       { label: "Back to menu", next: "root" },
@@ -43,10 +45,20 @@ export const CHAT_FLOW: Record<string, ChatNode> = {
   warranty_answer_length: {
     id: "warranty_answer_length",
     message:
-      "Warranty terms depend on the specific product and where you purchased it. Registering your product here confirms your purchase details for warranty support, but doesn't change the terms from your point of sale.",
+      "AktivSure covers quality issues if reported within 14 days of receiving your tin. Registering your product here confirms your purchase details for warranty support, but doesn't change the terms from your point of sale.",
     link: { href: "/disclaimer", label: "Read the full Disclaimer" },
     options: [
       { label: "Talk to us about this", next: "escalation_start" },
+      { label: "Back to menu", next: "root" },
+    ],
+  },
+  warranty_answer_defect: {
+    id: "warranty_answer_defect",
+    message:
+      "Within 14 days of receiving your tin, we cover: the tin arrived dented, the milk powder is lumpy when opened (a sign the seal was compromised), or the tin was already expired on arrival. Let us know and we'll follow up.",
+    link: { href: "/disclaimer", label: "Read the full Disclaimer" },
+    options: [
+      { label: "Report this problem", next: "escalation_start" },
       { label: "Back to menu", next: "root" },
     ],
   },

@@ -22,6 +22,9 @@ export default async function CapturePage({
         <p className="mt-2 text-sm text-neutral-600">
           Register for warranty coverage and updates on the product you purchased.
         </p>
+        <p className="mt-3 inline-block rounded-full bg-[#c9a24b]/15 px-3 py-1 text-xs font-semibold text-[#0b1f3a]">
+          Register now and receive a small token of appreciation from AktivSure
+        </p>
       </div>
 
       <ContactForm sources={sources} products={products} sourceSlug={source ?? null} />
