@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
+import ChatWidget from "@/components/ChatWidget";
 
 export const metadata: Metadata = {
   title: "AktivSure Connect",
@@ -19,6 +20,7 @@ export default function RootLayout({
           <Sidebar />
           <main className="min-w-0 flex-1">{children}</main>
         </div>
+        <ChatWidget />
       </body>
     </html>
   );
