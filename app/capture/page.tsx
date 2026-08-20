@@ -25,6 +25,18 @@ export default async function CapturePage({
       </div>
 
       <ContactForm sources={sources} products={products} sourceSlug={source ?? null} />
+
+      <p className="mt-6 text-center text-xs text-neutral-500">
+        By registering you agree to our{" "}
+        <a href="/privacy" className="underline">
+          Privacy Policy
+        </a>{" "}
+        and{" "}
+        <a href="/disclaimer" className="underline">
+          Disclaimer
+        </a>
+        .
+      </p>
     </div>
   );
 }

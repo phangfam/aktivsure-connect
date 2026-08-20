@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Sidebar from "@/components/Sidebar";
 
 export const metadata: Metadata = {
   title: "AktivSure Connect",
@@ -13,7 +14,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <div className="flex min-h-screen flex-col bg-neutral-50 md:flex-row">
+          <Sidebar />
+          <main className="min-w-0 flex-1">{children}</main>
+        </div>
+      </body>
     </html>
   );
 }
