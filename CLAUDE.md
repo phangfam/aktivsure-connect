@@ -65,3 +65,21 @@ through the sprints until the app actually works end-to-end — the PRD's succes
 just auth + an empty dashboard. The schema is already applied, so pull env with vercel env pull
 and build on the existing tables; commit + push after each sprint to deploy. Stop only when a
 real user can do the core job."
+
+## Post-v1 additions
+
+- **Sprint 4 (auth lock-down) is live.** `/dashboard` requires a Supabase auth session
+  (`middleware.ts` redirects to `/login`); `/capture` stays public. RLS uses a simple
+  authenticated-only SELECT model, not per-owner scoping (single-admin pilot, see
+  `supabase/migrations/0002_lockdown.sql`). Chris's login is a normal Supabase Auth user
+  created via the Supabase Dashboard — there is no signup page by design.
+- **Deterministic customer-service chatbot** (`components/ChatWidget.tsx`,
+  `lib/chatbot/flow.ts`) is embedded site-wide except `/dashboard` and `/login`. It's a fixed
+  decision tree (buttons only, no free text, no LLM) — edit `lib/chatbot/flow.ts` to change
+  branches. Its escalation path reuses the capture pipeline, tagging leads with the `chatbot`
+  lead_source.
+- **On-demand leads reporting:** ask in chat for a leads report/summary and query
+  `v_leads_report` (a locked-down view — `revoke`d from `anon`/`authenticated`, only reachable
+  via a privileged DB connection such as the Supabase MCP tools, never through the deployed
+  app) via `supabase/migrations/0004_leads_report_view.sql`. This is intentionally on-demand
+  only, not a scheduled/automated agent — PRD's v1 non-goals exclude CRM automation.
